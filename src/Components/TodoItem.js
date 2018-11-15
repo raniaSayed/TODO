@@ -29,14 +29,18 @@ class TodoItem extends Component {
 		if (this.props.complete === 'true') {
 			classes = classes + ' list-group-item-success';
 		}
+		let tag;
+		if(this.props.tag){
+			tag = <button type="button" className="btn btn-xs btn-primary img-circle" >{this.props.tag}</button>;
+
+		}
 		return (
 			<li className={classes}>
 			
 				{this.props.task}
 				&nbsp;&nbsp;&nbsp;&nbsp;
 
-				<button type="button" className="btn btn-xs btn-primary img-circle" 
-					onClick={this.toggleComplete.bind(this)}>{this.props.tag}</button>
+				{tag}
 
 				<div className="pull-right" role="group">
 				

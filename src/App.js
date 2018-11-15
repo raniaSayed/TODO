@@ -31,7 +31,6 @@ class App extends Component {
 
   componentWillMount(){
     if(this.state.todos === []){
-      console.log(999999);
       this.setTodos(this.state.todos);
     }
   }

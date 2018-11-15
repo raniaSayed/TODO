@@ -50,13 +50,12 @@ class AddTodo extends Component {
                         </div>
                         <hr />
                         <label htmlFor="tag" className="col-md-1 control-label">Tag</label>
-                         <div className="col-md-5">
+                         <div className="col-md-3">
                             <input type="text" id="tag" ref="tag" className="form-control" placeholder="Tag Todo" />
                         </div>
 
-                    </div>
-                    <div className="row">
-                        <div className="col-md-10 col-md-offset-2 text-right">
+           
+                        <div className="col-md-3 col-md-offset-2 text-right">
                             <input type="submit" value="Save Item" className="btn btn-primary" />
                         </div>
                     </div>
