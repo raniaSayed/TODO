@@ -22,14 +22,18 @@ class App extends Component {
 
     var todoStorage = window.localStorage.getItem('todos');
     this.state.todos= todoStorage=='undefined'?[] : JSON.parse(todoStorage);
-
-    console.log(this.state.todos);
+    return this.state.todos;
+    // console.log(this.state.todos);
   }
 
 
 
 
   componentWillMount(){
+    if(this.state.todos === []){
+      console.log(999999);
+      this.setTodos(this.state.todos);
+    }
   }
 
   componentDidMount(){
@@ -38,7 +42,7 @@ class App extends Component {
 
   componentDidUpdate(){
 
-    // this.setTodos(this.state);
+    // this.setTodos(this.state.todos);
   }
 
   handleAddTodo(todo){
@@ -50,18 +54,34 @@ class App extends Component {
   }
 
   handleRemoveTodo(nodeId){
+    console.log(nodeId);
 		var todos = this.state.todos;
 		todos = todos.filter(function (todo) {
+
 			return todo.id !== nodeId;
 		});
     this.setState({todos});
+
     //set in local storage
-    this.setTodos(this.state.todos);
+    this.setTodos(todos);
 
 		return;
 	}
 
-
+	handleToggleComplete(nodeId) {
+		var todos = this.state.todos;
+		for (var i in todos) {
+			if (todos[i].id == nodeId) {
+				todos[i].complete = todos[i].complete === 'true' ? 'false' : 'true';
+				break;
+			}
+		}
+    this.setState({todos});
+    //alter data in local storage
+    this.setTodos(todos);
+		return;
+  }
+  
   render() {
     
     return (
@@ -71,7 +91,7 @@ class App extends Component {
       <div className="well">
 				<h1 className="vert-offset-top-0">To do:</h1>
 				<AddTodo addTodo={this.handleAddTodo.bind(this)} />
-				<TodoList data={this.state.todos} removeNode={this.handleRemoveTodo} toggleComplete={this.handleToggleComplete} />
+				<TodoList data={this.getTodos()} removeNode={this.handleRemoveTodo.bind(this)} toggleComplete={this.handleToggleComplete.bind(this)} />
 			</div>
     );
   }
