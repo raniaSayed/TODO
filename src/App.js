@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import Todo from './Components/Todo';
 import AddTodo from './Components/AddTodo';
+import EditTodo from './Components/EditTodo';
 import TodoList from './Components/TodoList';
 import './App.css';
 
@@ -87,11 +91,45 @@ class App extends Component {
       // <div className="App">
       //   <AddTodo addTodo={this.handleAddTodo.bind(this)}  />
       // </div>
-      <div className="well">
-				<h1 className="vert-offset-top-0">To do:</h1>
-				<AddTodo addTodo={this.handleAddTodo.bind(this)} />
-				<TodoList data={this.getTodos()} removeNode={this.handleRemoveTodo.bind(this)} toggleComplete={this.handleToggleComplete.bind(this)} />
-			</div>
+      
+
+          // <Router>
+
+          //     <ul>
+          //     <li>
+          //       <Link to="/">Todos</Link>
+          //     </li>
+          //     <li>
+          //       <Link to="/edit">Edit</Link>
+          //     </li>
+          //   </ul>
+          //   <div>
+          //       <Route path="/edit" component={EditTodo} />
+          //       <Route exact path="/" component={Todo} />
+          //   </div>
+
+          // </Router>
+          <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/topics">Topics</Link>
+              </li>
+            </ul>
+    
+            <hr />
+    
+            <Route exact path="/" component={Todo} />
+            <Route path="/about" component={AddTodo} />
+            <Route path="/topics" component={EditTodo} />
+          </div>
+        </Router>
     );
   }
 }
