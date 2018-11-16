@@ -71,6 +71,24 @@ class App extends Component {
 		return;
 	}
 
+  // handleEditTodo(nodeId,nodeTask,nodeTag){
+  //   console.log(nodeId);
+	// 	var todos = this.state.todos;
+	// 	todos = todos.forEach(function (todo) {
+  //     if( todo.id == nodeId){
+  //       todo.task = nodeTask;
+  //       todo.tag = nodeTag;
+  //       this.setState({todos});
+
+  //   //set in local storage
+  //   this.setTodos(todos);
+
+	// 	return;
+  //     }
+  //   });
+    
+	// }
+
 	handleToggleComplete(nodeId) {
 		var todos = this.state.todos;
 		for (var i in todos) {
@@ -88,27 +106,7 @@ class App extends Component {
   render() {
     
     return (
-      // <div className="App">
-      //   <AddTodo addTodo={this.handleAddTodo.bind(this)}  />
-      // </div>
-      
-
-          // <Router>
-
-          //     <ul>
-          //     <li>
-          //       <Link to="/">Todos</Link>
-          //     </li>
-          //     <li>
-          //       <Link to="/edit">Edit</Link>
-          //     </li>
-          //   </ul>
-          //   <div>
-          //       <Route path="/edit" component={EditTodo} />
-          //       <Route exact path="/" component={Todo} />
-          //   </div>
-
-          // </Router>
+     
           <Router>
           <div>
             <ul>
@@ -119,15 +117,15 @@ class App extends Component {
                 <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/topics">Topics</Link>
+                <Link to="/edit/2">Topics</Link>
               </li>
             </ul>
     
             <hr />
     
-            <Route exact path="/" component={Todo} />
+            <Route exact path="/" component={Todo}  />
             <Route path="/about" component={AddTodo} />
-            <Route path="/topics" component={EditTodo} />
+            <Route path="/edit/:id"  component={EditTodo} />
           </div>
         </Router>
     );

@@ -27,7 +27,7 @@ class AddTodo extends Component {
                     tag: this.refs.tag.value
                 }
             },() =>{
-                this.props.addTodo(this.state.todo);
+                this.props.addNode(this.state.todo);
             }
         );
         ReactDOM.findDOMNode(this.refs.task).value = '';
