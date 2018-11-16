@@ -109,7 +109,7 @@ class App extends Component {
      
           <Router>
           <div>
-            <ul>
+            {/* <ul>
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -119,10 +119,13 @@ class App extends Component {
               <li>
                 <Link to="/edit/2">Topics</Link>
               </li>
-            </ul>
+            </ul> */}
     
             <hr />
     
+            <Route  path="/register" component={Todo}  />
+            <Route  path="/login" component={Todo}  />
+            
             <Route exact path="/" component={Todo}  />
             <Route path="/about" component={AddTodo} />
             <Route path="/edit/:id"  component={EditTodo} />

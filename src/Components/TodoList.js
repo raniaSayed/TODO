@@ -23,7 +23,7 @@ class TodoList extends Component {
 	render() {
 		var listNodes = this.props.data.map(function (listItem) {
 			return (
-				<TodoItem key={listItem.id} nodeId={listItem.id} task={listItem.task}  tag={listItem.tag} complete={listItem.complete} removeNode={this.removeNode.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
+				<TodoItem key={listItem.id} listItem={listItem} removeNode={this.removeNode.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
 			);
 		},this);
 		return (

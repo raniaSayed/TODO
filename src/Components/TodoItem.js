@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import uuid from 'uuid';
+import { Link } from "react-router-dom";
+
 import { runInThisContext } from 'vm';
+
 
 class TodoItem extends Component {
     constructor(){
 		super();
 		this.state = {
-            data:{}
+            todo:{}
         }        
     }
     removeNode(e){
@@ -18,7 +21,7 @@ class TodoItem extends Component {
 
 	toggleComplete(e) {
 		e.preventDefault();
-		this.props.toggleComplete(this.props.nodeId);
+		this.props.toggleComplete(this.props.listItem.id);
 		return;
 	}
 	updateClass () {
@@ -26,28 +29,38 @@ class TodoItem extends Component {
 	}
 	render() {
 		var classes = 'list-group-item clearfix';
-		if (this.props.complete === 'true') {
+		if (this.props.listItem.complete === 'true') {
 			classes = classes + ' list-group-item-success';
 		}
 		let tag;
-		if(this.props.tag){
-			tag = <button type="button" className="btn btn-xs btn-primary img-circle" >{this.props.tag}</button>;
+		if(this.props.listItem.tag){
+			tag = <button type="button" className="btn btn-xs btn-primary img-circle" >{this.props.listItem.tag}</button>;
 
 		}
 		return (
 			<li className={classes}>
 			
-				{this.props.task}
+				{this.props.listItem.task}
 				&nbsp;&nbsp;&nbsp;&nbsp;
 
 				{tag}
 
 				<div className="pull-right" role="group">
 				
+			     	<Link to={'/edit/'+this.props.listItem.id}>        
+						 <span class="glyphicon glyphicon-edit"></span>
+					</Link>
+					&nbsp;&nbsp;
+
 					<button type="button" className="btn btn-xs btn-success img-circle" 
 						onClick={this.toggleComplete.bind(this)}>&#x2713;</button>
+					
+					&nbsp;&nbsp;
 					<button type="button" className="btn btn-xs btn-danger img-circle" 
 						onClick={this.removeNode.bind(this)}>&#xff38;</button>
+						
+					
+					{/* //TODO to be changes to icon after internet returns */}
 				</div>
 			</li>
 		);
