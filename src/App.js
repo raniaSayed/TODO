@@ -7,6 +7,7 @@ import EditTodo from './Components/EditTodo';
 import TodoList from './Components/TodoList';
 import './App.css';
 
+//remaining filter by tag -- filter by completed // regiser + login
 class App extends Component {
   constructor(){
     super();
@@ -108,21 +109,7 @@ class App extends Component {
     return (
      
           <Router>
-          <div>
-            {/* <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/edit/2">Topics</Link>
-              </li>
-            </ul> */}
-    
-            <hr />
-    
+          <div>    
             <Route  path="/register" component={Todo}  />
             <Route  path="/login" component={Todo}  />
             

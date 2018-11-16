@@ -54,10 +54,8 @@ class EditTodo extends Component {
                 history.push('/');
 
 
-               // return;// render("/");
             }
         }                                
-       // return;
     }
      getCurrentTodo(){	
         const id = this.props.match.params.id;
