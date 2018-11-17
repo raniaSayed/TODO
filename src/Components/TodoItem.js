@@ -24,9 +24,7 @@ class TodoItem extends Component {
 		this.props.toggleComplete(this.props.listItem.id);
 		return;
 	}
-	updateClass () {
-		
-	}
+	
 	render() {
 		var classes = 'list-group-item clearfix';
 		if (this.props.listItem.complete === 'true') {

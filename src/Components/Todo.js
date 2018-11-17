@@ -12,17 +12,29 @@ class Todo extends Component {
     this.state = {
       todos:[],
       completedTodos:[],
-      filteredTodos:[]
+      filteredTodos:[],
+      wellStyle : {
+        margin: "0%",
+        width: "max-content"
+      },
+      user:{}
     }
   }
+
+  getAuthUser(){
+    var user = window.localStorage.getItem('user');
+    this.state.user= (user=='undefined' || user ==null )?false : JSON.parse(user);
+    return this.state.user;
+  }
+
 
   setTodos(todos){
     window.localStorage.setItem('todos', JSON.stringify(todos));
   }
 
   getTodos(){
-    //load it from local storage
 
+    //check if any filteration criteria applied
     if(this.state.completedTodos.length > 0){
       return this.state.completedTodos;
     }
@@ -30,14 +42,15 @@ class Todo extends Component {
       return this.state.filteredTodos;
     }
 
+    //load it from local storage
     if(this.state.todos!==[]){
       var todoStorage = window.localStorage.getItem('todos');
       this.state.todos= (todoStorage=='undefined' || todoStorage ==null )?[] : JSON.parse(todoStorage);
-      console.log(this.state.todos);
     }
-    console.log( this.state.todos);
+    //get only auth user todos
+    var authTodos = this.state.todos.filter((todo)=>todo.userId == this.state.user.id)
     
-    return this.state.todos;
+    return authTodos;
   }
 
   componentWillMount(){
@@ -59,13 +72,36 @@ class Todo extends Component {
   }
 
   handleRemoveTodo(nodeId){
-    console.log(nodeId);
-		var todos = this.state.todos;
-		todos = todos.filter(function (todo) {
+    var filteredTodos  = this.state.completedTodos;
+    var completedTodos = this.state.filteredTodos;
 
-			return todo.id !== nodeId;
-		});
-    this.setState({todos});
+    //if delete when filter by completed
+    if(completedTodos.length > 0){
+
+        completedTodos = completedTodos.filter(function (todo) {
+        return todo.id !== nodeId;
+      });
+    }
+
+    //if delete when filter by tag name
+    
+    if(filteredTodos.length > 0){
+        console.log('inside remove filter');
+        
+        filteredTodos = filteredTodos.filter(function (todo) {
+        return todo.id !== nodeId;
+      });
+    }
+    // else{
+
+    //anyway edit in main todos
+    var todos = this.state.todos;
+      
+    todos = todos.filter(function (todo) {
+      return todo.id !== nodeId;
+    });
+    // }
+    this.setState({todos:todos,filteredTodos:filteredTodos,completedTodos:completedTodos});
 
     //set in local storage
     this.setTodos(todos);
@@ -90,11 +126,9 @@ class Todo extends Component {
 
   handleToggleCompleted(){
     var todos = this.state.todos;
-    console.log(this.state.completedTodos);
     
     if(this.state.completedTodos.length == 0){
       todos = todos.filter(function (todo) {
-        console.log(todo.complete);
         
         return todo.complete == 'true';
       });
@@ -104,39 +138,39 @@ class Todo extends Component {
       this.setState({completedTodos:[]});    
 
     }
-    // console.log(todos);
-
-    //set in local storage
-    // this.setTodos(completedTodos);
   }
 
   handleFilterByTag(tag){
     console.log('tag');
     console.log(tag);
     var todos = this.state.todos;
-    console.log(this.state.filteredTodos);
+    console.log( this.state.todos);
+    
     var re = new RegExp(tag, 'i');
 
-    // if(this.state.filteredTodos.length == 0){
-      todos = todos.filter(function (todo) {
+    todos = todos.filter(function (todo) {
+        console.log(todo.tag);
         
-        // return todo.task == 'true';
         return todo.tag.match(re)
-      });
-      
-      this.setState({filteredTodos:todos});    
-    // }
+    });
+    
+    this.setState({filteredTodos:todos});    
 
   }
   
   render() {
+    console.log(this.state.user);
     
     return (
-      <div className="well">
-            <h1 className="vert-offset-top-0">To do:</h1>
+      <div className="well" style={this.state.wellStyle}>
+            <h1 className="vert-offset-top-0">
+            Hello {this.getAuthUser().username}
+            <hr/>
+            Your To dos:</h1>
+            
             <FilterTodo filterByTag={this.handleFilterByTag.bind(this)} 
              onChange={this.handleToggleCompleted.bind(this)}  />
-            <AddTodo addNode={this.handleAddTodo.bind(this)} />
+            <AddTodo user={this.state.user} addNode={this.handleAddTodo.bind(this)} />
 
             <TodoList data={this.getTodos()} removeNode={this.handleRemoveTodo.bind(this)} toggleComplete={this.handleToggleComplete.bind(this)} />
 		</div>

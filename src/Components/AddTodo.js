@@ -24,7 +24,8 @@ class AddTodo extends Component {
                     id: uuid.v4(),
                     task: this.refs.task.value,
                     complete: false,
-                    tag: this.refs.tag.value
+                    tag: this.refs.tag.value,
+                    userId:this.props.user.id
                 }
             },() =>{
                 this.props.addNode(this.state.todo);
@@ -43,6 +44,7 @@ class AddTodo extends Component {
             <hr />
             <div className="clearfix">
                 <form className="todoForm form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
+                    
                     <div className="form-group">
                         <label htmlFor="task" className="col-md-1 control-label">Task</label>
                         <div className="col-md-10">
