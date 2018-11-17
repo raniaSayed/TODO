@@ -15,7 +15,7 @@ class TodoItem extends Component {
     removeNode(e){
 		e.preventDefault();
 		console.log(this);
-		this.props.removeNode(this.props.nodeId);
+		this.props.removeNode(this.props.listItem.id);
 		return;
 	}
 

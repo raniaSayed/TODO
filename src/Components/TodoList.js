@@ -17,6 +17,7 @@ class TodoList extends Component {
     }
     
 	toggleComplete(nodeId) {
+		console.log(nodeId);
 		this.props.toggleComplete(nodeId);
 		return;
 	}

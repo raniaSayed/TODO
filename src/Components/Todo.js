@@ -4,12 +4,15 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import AddTodo from './AddTodo';
 import EditTodo from './EditTodo';
 import TodoList from './TodoList';
+import FilterTodo from './FilterTodo';
 
 class Todo extends Component {
   constructor(){
     super();
     this.state = {
-      todos:[]
+      todos:[],
+      completedTodos:[],
+      filteredTodos:[]
     }
   }
 
@@ -20,14 +23,22 @@ class Todo extends Component {
   getTodos(){
     //load it from local storage
 
-    var todoStorage = window.localStorage.getItem('todos');
-    this.state.todos= (todoStorage=='undefined' || todoStorage ==null )?[] : JSON.parse(todoStorage);
-    console.log(this.state.todos);
+    if(this.state.completedTodos.length > 0){
+      return this.state.completedTodos;
+    }
+    if(this.state.filteredTodos.length > 0){
+      return this.state.filteredTodos;
+    }
+
+    if(this.state.todos!==[]){
+      var todoStorage = window.localStorage.getItem('todos');
+      this.state.todos= (todoStorage=='undefined' || todoStorage ==null )?[] : JSON.parse(todoStorage);
+      console.log(this.state.todos);
+    }
+    console.log( this.state.todos);
+    
     return this.state.todos;
   }
-
-
-
 
   componentWillMount(){
     if(this.state.todos === []){
@@ -37,11 +48,6 @@ class Todo extends Component {
 
   componentDidMount(){
     this.getTodos();
-  }
-
-  componentDidUpdate(){
-
-    // this.setTodos(this.state.todos);
   }
 
   handleAddTodo(todo){
@@ -76,9 +82,51 @@ class Todo extends Component {
 			}
 		}
     this.setState({todos});
+
     //alter data in local storage
     this.setTodos(todos);
 		return;
+  }
+
+  handleToggleCompleted(){
+    var todos = this.state.todos;
+    console.log(this.state.completedTodos);
+    
+    if(this.state.completedTodos.length == 0){
+      todos = todos.filter(function (todo) {
+        console.log(todo.complete);
+        
+        return todo.complete == 'true';
+      });
+      
+      this.setState({completedTodos:todos});    
+    }else{
+      this.setState({completedTodos:[]});    
+
+    }
+    // console.log(todos);
+
+    //set in local storage
+    // this.setTodos(completedTodos);
+  }
+
+  handleFilterByTag(tag){
+    console.log('tag');
+    console.log(tag);
+    var todos = this.state.todos;
+    console.log(this.state.filteredTodos);
+    var re = new RegExp(tag, 'i');
+
+    // if(this.state.filteredTodos.length == 0){
+      todos = todos.filter(function (todo) {
+        
+        // return todo.task == 'true';
+        return todo.tag.match(re)
+      });
+      
+      this.setState({filteredTodos:todos});    
+    // }
+
   }
   
   render() {
@@ -86,6 +134,8 @@ class Todo extends Component {
     return (
       <div className="well">
             <h1 className="vert-offset-top-0">To do:</h1>
+            <FilterTodo filterByTag={this.handleFilterByTag.bind(this)} 
+             onChange={this.handleToggleCompleted.bind(this)}  />
             <AddTodo addNode={this.handleAddTodo.bind(this)} />
 
             <TodoList data={this.getTodos()} removeNode={this.handleRemoveTodo.bind(this)} toggleComplete={this.handleToggleComplete.bind(this)} />
