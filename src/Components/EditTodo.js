@@ -17,12 +17,18 @@ class EditTodo extends Component {
         window.localStorage.setItem('todos', JSON.stringify(todos));
     }
 
-    getTodos(){
+    getTodos() {
+
         //load it from local storage
-        var todoStorage = window.localStorage.getItem('todos');
-        this.state.todos= (todoStorage=='undefined' ||todoStorage == null)?[] : JSON.parse(todoStorage);
-        return this.state.todos;
-    }
+        if (this.state.todos !== []) {
+          var todoStorage = window.localStorage.getItem('todos');
+          this.state.todos = (todoStorage == 'undefined' || todoStorage == null) ? [] : JSON.parse(todoStorage);
+        }
+        //get only auth user todos
+        var authTodos = this.state.todos.filter((todo) => todo.userId == this.state.user.id)
+    
+        return authTodos;
+      }
 
     handleChange(){
         this.state.todo.task = this.refs.task

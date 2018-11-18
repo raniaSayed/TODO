@@ -14,17 +14,6 @@ class AddTodo extends Component {
     handleChange(e){ 
         console.log(e.target.value);   
         this.props.filterByTag(e.target.value);    
-
-        // var task = ReactDOM.findDOMNode(this.refs.filter).value.trim();
-         
-		
-        //     this.setState({
-               
-        //     },() =>{
-        //         this.props.addNode(this.state.todo);
-        //     }
-        // );
-        // ReactDOM.findDOMNode(this.refs.task).value = '';
         return;
     }
 
