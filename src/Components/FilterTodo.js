@@ -12,7 +12,6 @@ class AddTodo extends Component {
     }
 
     handleChange(e){ 
-        console.log(e.target.value);   
         this.props.filterByTag(e.target.value);    
         return;
     }

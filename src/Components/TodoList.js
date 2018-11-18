@@ -8,16 +8,13 @@ class TodoList extends Component {
         super();
     }
     componentWillMount(){
-        console.log(this.props);
     }
     removeNode(nodeId) {
-        console.log(nodeId);
 		this.props.removeNode(nodeId);
 		return;
     }
     
 	toggleComplete(nodeId) {
-		console.log(nodeId);
 		this.props.toggleComplete(nodeId);
 		return;
 	}

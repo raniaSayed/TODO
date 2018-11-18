@@ -37,7 +37,6 @@ class App extends Component {
 
 
   handleRemoveTodo(nodeId) {
-    console.log(nodeId);
     var todos = this.state.todos;
     todos = todos.filter(function (todo) {
 

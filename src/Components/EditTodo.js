@@ -35,10 +35,8 @@ class EditTodo extends Component {
     }
     handleSubmit(e){
         e.preventDefault();        
-        console.log(this.props);
         const id = this.props.match.params.id;
         const history  =  this.props.history;
-        console.log(history);
         
         if(id){
             var todos = this.getTodos();

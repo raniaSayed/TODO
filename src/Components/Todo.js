@@ -54,14 +54,14 @@ class Todo extends Component {
     }
     //get only auth user todos
     var authTodos = this.state.todos.filter((todo) => todo.userId == this.state.user.id)
-
+    this.state.todos = authTodos;
     return authTodos;
   }
 
   componentWillMount() {
-    // if (this.state.todos === []) {
-    //   this.setTodos(this.state.todos);
-    // }
+    if (this.state.todos === []) {
+      this.setTodos(this.state.todos);
+    }
   }
 
   componentDidMount() {
@@ -92,7 +92,6 @@ class Todo extends Component {
     //if delete when filter by tag name
 
     if (filteredTodos.length > 0) {
-      console.log('inside remove filter');
 
       filteredTodos = filteredTodos.filter(function (todo) {
         return todo.id !== nodeId;
@@ -148,12 +147,10 @@ class Todo extends Component {
 
   handleFilterByTag(tag) {
     var todos = this.state.todos;
-    console.log(this.state.todos);
 
     var re = new RegExp(tag, 'i');
 
     todos = todos.filter(function (todo) {
-      console.log(todo.tag);
 
       return todo.tag.match(re)
     });
@@ -163,7 +160,6 @@ class Todo extends Component {
   }
 
   render() {
-    console.log(this.state.user);
 
     return (
       <div className="well" style={this.state.wellStyle}>
