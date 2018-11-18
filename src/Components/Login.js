@@ -12,11 +12,11 @@ class Login extends Component {
     }
   }
 
-  getUser(username,password) {
+  getUser(username, password) {
     var user = window.localStorage.getItem('user');
     user = (user == 'undefined' || user == null) ? false : JSON.parse(user);
-    if(user){
-      var isAuth = this.isAuth(user,username,password);
+    if (user) {
+      var isAuth = this.isAuth(user, username, password);
       if (isAuth) {
         user.loggedIn = true;
         window.localStorage.setItem('user', JSON.stringify(user));
@@ -28,7 +28,7 @@ class Login extends Component {
   }
 
 
-  isAuth(user,username,password) {
+  isAuth(user, username, password) {
     if (user.username == username
       && user.password == password) {
       return true;
@@ -40,7 +40,7 @@ class Login extends Component {
 
   handleLogin(e) {
     e.preventDefault();
-    if (this.getUser(this.refs.username.value,this.refs.password.value)) {
+    if (this.getUser(this.refs.username.value, this.refs.password.value)) {
       //refresh page to reload localstorage
       window.location.reload();
 
@@ -48,7 +48,7 @@ class Login extends Component {
       const history = this.props.history;
       history.push('/');
 
-    }else{
+    } else {
       alert('invalid username or password!');
     }
 

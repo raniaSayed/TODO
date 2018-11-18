@@ -24,9 +24,9 @@ class Todo extends Component {
   getAuthUser() {
     var user = window.localStorage.getItem('user');
     user = (user == 'undefined' || user == null) ? false : JSON.parse(user);
-    if(user.loggedIn){
+    if (user.loggedIn) {
       this.state.user = user;
-    }else{
+    } else {
       this.state.user = false;
     }
     return this.state.user;
@@ -85,7 +85,7 @@ class Todo extends Component {
     if (completedTodos.length > 0) {
 
       completedTodos = completedTodos.filter(function (todo) {
-        return (todo.id !== nodeId );
+        return (todo.id !== nodeId);
       });
     }
 
@@ -97,8 +97,6 @@ class Todo extends Component {
         return todo.id !== nodeId;
       });
     }
-    // else{
-
     //anyway edit in main todos
     var todos = this.state.todos;
 
@@ -147,16 +145,18 @@ class Todo extends Component {
 
   handleFilterByTag(tag) {
     var todos = this.state.todos;
-
+    console.log(todos);
     var re = new RegExp(tag, 'i');
 
     todos = todos.filter(function (todo) {
 
       return todo.tag.match(re)
     });
+    console.log("todosssssssssss");
+
+    console.log(todos);
 
     this.setState({ filteredTodos: todos });
-
   }
 
   render() {
