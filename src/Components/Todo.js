@@ -96,8 +96,10 @@ class Todo extends Component {
       filteredTodos = filteredTodos.filter(function (todo) {
         return todo.id !== nodeId;
       });
+
+      
     }
-    //anyway edit in main todos
+    //anyway delete from main todos
     var todos = this.state.todos;
 
     todos = todos.filter(function (todo) {
@@ -154,16 +156,12 @@ class Todo extends Component {
 
     if(todos.length === this.state.todos.length){
       this.setState({ filteredTodos: [] });
-      this.state.filteredTodos=[];
+      this.getTodos();
     }
     else{
       this.setState({ filteredTodos: todos });
-      this.state.filteredTodos = todos;
-
     }
-    console.log('----------------');
-    
-    console.log(this.state.filteredTodos.length);
+
   }
 
   render() {
@@ -173,7 +171,7 @@ class Todo extends Component {
         <h1 className="vert-offset-top-0">
           Hello {this.getAuthUser().username}
           <hr />
-          Your To dos:</h1>
+          Your Tasks:</h1>
 
         <FilterTodo filterByTag={this.handleFilterByTag.bind(this)}
           onChange={this.handleToggleCompleted.bind(this)} />
