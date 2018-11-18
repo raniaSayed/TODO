@@ -8,7 +8,13 @@ class Register extends Component {
 
         super();
         this.state = {
-            user: {}
+            user: {},
+            btnStyle: {
+                marginLeft: "73%"
+              },
+              formStyle:{
+                marginLeft: "-13%"
+              }
         }
     }
     setUser(user) {
@@ -42,18 +48,20 @@ class Register extends Component {
                     <h3> Registeration Form</h3>
 
                     <form className="todoForm form-horizontal" onSubmit={this.handleRegister.bind(this)}>
-                        <div className="form-group">
+                        <div className="form-group" style={this.state.formStyle}>
                             <label htmlFor="username" className="col-md-3 control-label">Username</label>
-                            <div className="col-md-6">
+                            <div className="col-md-9">
                                 <input type="text" id="username" ref="username" className="form-control" placeholder="Username" />
                             </div>
+                            <hr />
                             <label htmlFor="pasword" className="col-md-3 control-label">Password</label>
-                            <div className="col-md-6">
+                            <div className="col-md-9">
                                 <input type="password" id="password" ref="password" className="form-control" placeholder="Pasword" />
                             </div>
                             <hr />
-                            <div className="col-md-3 col-md-offset-2 text-right">
-                                <input type="submit" value="Register" className="btn btn-primary" />
+                            <hr />
+                            <div className="col-md-2 col-md-offset-2 text-right">
+                                <input type="submit" style={this.state.btnStyle} value="Register" className="btn btn-primary" />
                             </div>
                         </div>
                     </form>
