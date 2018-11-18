@@ -1,31 +1,31 @@
-import React, { Component  } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import uuid from 'uuid';
 
 class AddTodo extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            filteredTodos:{}
+            filteredTodos: {}
         }
     }
 
-    handleChange(e){ 
-        this.props.filterByTag(e.target.value);    
+    handleChange(e) {
+        this.props.filterByTag(e.target.value);
         return;
     }
 
-    handleToggleCompleted(){
+    handleToggleCompleted() {
         this.props.onChange();
     }
 
-    render(){
-          return (
+    render() {
+        return (
 
             <div className="commentForm vert-offset-top-2">
-            <hr />
-            <div className="clearfix">
+                <hr />
+                <div className="clearfix">
                     <div className="form-group">
                         <label htmlFor="filter" className="col-md-1 control-label">Filter</label>
                         <div className="col-md-5">
@@ -35,10 +35,10 @@ class AddTodo extends Component {
                             <button className="btn btn-primary" onClick={this.handleToggleCompleted.bind(this)}>Toggle Complete</button>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
 
-          );
+        );
     }
 
 }
