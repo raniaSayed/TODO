@@ -145,16 +145,13 @@ class Todo extends Component {
 
   handleFilterByTag(tag) {
     var todos = this.state.todos;
-    console.log(todos);
     var re = new RegExp(tag, 'i');
 
     todos = todos.filter(function (todo) {
 
       return todo.tag.match(re)
     });
-    console.log("todosssssssssss");
 
-    console.log(todos);
 
     this.setState({ filteredTodos: todos });
   }
