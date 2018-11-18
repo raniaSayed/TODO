@@ -97,7 +97,7 @@ class Todo extends Component {
         return todo.id !== nodeId;
       });
 
-      
+
     }
     //anyway delete from main todos
     var todos = this.state.todos;
@@ -154,11 +154,11 @@ class Todo extends Component {
       return todo.tag.match(re)
     });
 
-    if(todos.length === this.state.todos.length){
+    if (todos.length === this.state.todos.length) {
       this.setState({ filteredTodos: [] });
       this.getTodos();
     }
-    else{
+    else {
       this.setState({ filteredTodos: todos });
     }
 

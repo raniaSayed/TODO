@@ -4,16 +4,16 @@ import TodoItem from './TodoItem';
 
 
 class TodoList extends Component {
-    constructor(){
-        super();
-    }
-    componentWillMount(){
-    }
-    removeNode(nodeId) {
+	constructor() {
+		super();
+	}
+	componentWillMount() {
+	}
+	removeNode(nodeId) {
 		this.props.removeNode(nodeId);
 		return;
-    }
-    
+	}
+
 	toggleComplete(nodeId) {
 		this.props.toggleComplete(nodeId);
 		return;
@@ -23,7 +23,7 @@ class TodoList extends Component {
 			return (
 				<TodoItem key={listItem.id} listItem={listItem} removeNode={this.removeNode.bind(this)} toggleComplete={this.toggleComplete.bind(this)} />
 			);
-		},this);
+		}, this);
 		return (
 			<ul className="list-group">
 				{listNodes}
