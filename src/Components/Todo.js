@@ -152,8 +152,18 @@ class Todo extends Component {
       return todo.tag.match(re)
     });
 
+    if(todos.length === this.state.todos.length){
+      this.setState({ filteredTodos: [] });
+      this.state.filteredTodos=[];
+    }
+    else{
+      this.setState({ filteredTodos: todos });
+      this.state.filteredTodos = todos;
 
-    this.setState({ filteredTodos: todos });
+    }
+    console.log('----------------');
+    
+    console.log(this.state.filteredTodos.length);
   }
 
   render() {

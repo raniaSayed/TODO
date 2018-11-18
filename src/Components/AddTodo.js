@@ -32,6 +32,7 @@ class AddTodo extends Component {
             }
             );
             ReactDOM.findDOMNode(this.refs.task).value = '';
+            ReactDOM.findDOMNode(this.refs.tag).value = '';
             return;
         }
     }
