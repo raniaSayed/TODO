@@ -169,9 +169,11 @@ class Todo extends Component {
     return (
       <div className="well" style={this.state.wellStyle}>
         <h1 className="vert-offset-top-0">
-          Hello {this.getAuthUser().username}
+       
+          Todo List:
           <hr />
-          Your Tasks:</h1>
+          Hello {this.getAuthUser().username}
+          </h1>
 
         <FilterTodo filterByTag={this.handleFilterByTag.bind(this)}
           onChange={this.handleToggleCompleted.bind(this)} />

@@ -64,14 +64,17 @@ class Login extends Component {
           <form className="todoForm form-horizontal" onSubmit={this.handleLogin.bind(this)}>
             <div className="form-group">
               <label htmlFor="username" className="col-md-3 control-label">Username</label>
-              <div className="col-md-6">
+              <div className="col-md-9">
                 <input type="text" id="username" ref="username" className="form-control" placeholder="Username" />
               </div>
+              <hr />
               <label htmlFor="pasword" className="col-md-3 control-label">Password</label>
-              <div className="col-md-6">
+              <div className="col-md-9">
                 <input type="password" id="password" ref="password" className="form-control" placeholder="Pasword" />
               </div>
               <hr />
+              <hr />
+
               <div className="col-md-3 col-md-offset-2 text-right">
                 <input type="submit" value="Login" className="btn btn-primary" />
               </div>
