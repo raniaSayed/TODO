@@ -11,14 +11,14 @@ start app via https://localhost:3000/
 
 Workflow Explination:
 
-Starting page (After login):
 ![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-40-28.png)
+Starting page (After login):
 
-Adding new Task:
 ![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-41-33.png)
+Adding new Task:
 
-First task added:(you can update/delete or mark as done)
 ![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-41-55.png)
+First task added:(you can update/delete or mark as done)
 
 Adding another task:
 ![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-42-27.png)
