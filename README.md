@@ -1,44 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+TODO standalone app developed in ReactJs using localstorage features.
+open project directory
 
-## Available Scripts
+open cmd and type this commands
 
-In the project directory, you can run:
+$ npm install
 
-### `npm start`
+$ npm start
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+start app via https://localhost:3000/
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Workflow Explination:
 
-### `npm test`
+Starting page (After login):
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-40-28.png)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Adding new Task:
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-41-33.png)
 
-### `npm run build`
+First task added:(you can update/delete or mark as done)
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-41-55.png)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Adding another task:
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-42-27.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-42-44.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-43-16.png)
 
-### `npm run eject`
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-43-32.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Filter tasks by substirng match:
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-43-52.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Edit Task#2:
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-45-12.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-45-26.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+After delete Task#3:
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-46-40.png)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+After click toggle complete tasks button:
+![alt text](https://github.com/raniaSayed/TODO/blob/master/Screenshots/Screenshot%20from%202020-06-08%2010-47-13.png)
